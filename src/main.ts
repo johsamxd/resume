@@ -1,10 +1,17 @@
 import "./style.css";
 import { initDarkMode } from "./dark-mode.ts";
+import { renderHeader } from "./components/header.ts";
+import { renderAbout } from "./components/about.ts";
+import { renderPortfolio } from "./components/portfolio.ts";
+import { renderLinks } from "./components/links.ts";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
-    <h1>Resume</h1>
-    <button id="theme-toggle" class="bg-amber-50 rounded-2xl p-2 cursor-pointer hover:bg-amber-100 duration-300">Toggle theme</button>
+    ${renderHeader()}
+    <h1 class="text-center text-5xl font-bold">Кырджагасов Аман Анатольевич</h1>
+    ${renderAbout()}
+    ${renderPortfolio()}
+    ${renderLinks()}  
   </div>
 `;
 

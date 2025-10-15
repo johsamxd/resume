@@ -2,24 +2,36 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*noinspection ALL*/
+#theme-circle:after {
+  content: " ";
+  position: absolute;
+  border-radius: 50%;
+  width: var(--after-width);
+  height: var(--after-height);
+  box-shadow: 0 0 0 10000px var(--after-color);
+}
+
 @theme {
-  --color-primary: #166534; /* Forest green, softer than original */
-  --color-muted: #e5e5e5; /* Light gray for subtle elements */
-  --color-tertiary: #94a3b8; /* Slate blue-gray, Notion-like */
-  --color-surface: #ffffff; /* Pure white for surfaces */
-  --color-accent: #64748b; /* Grayscale accent with bluish tint */
-  --color-secondary: #dcfce7; /* Very light green for highlights */
-  --color-content: #0f172a; /* Almost black, but softer */
-  --color-background: #f8fafc; /* Off-white background, Notion-like */
+  --color-primary: #166534;
+  --color-background: #f4f4f4;
+  --color-text: #161616;
+  --color-card: #ffffff;
 }
 
 .dark {
-  --color-primary: #4ade80; /* Brighter green for dark mode */
-  --color-muted: #334155; /* Muted slate color */
-  --color-tertiary: #64748b; /* Medium gray with blue tint */
-  --color-surface: #1e293b; /* Dark blue-gray for surfaces */
-  --color-accent: #94a3b8; /* Medium-light gray accent */
-  --color-secondary: #064e3b; /* Dark teal-green */
-  --color-content: #f1f5f9; /* Off-white text */
-  --color-background: #0f172a; /* Very dark blue-gray background */
+  --color-primary: #4ade80;
+  --color-background: #0a0a0a;
+  /* #1e1e1e; */
+  --color-text: #f5f5f5;
+  --color-card: #1e1e1e;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-text m-0 py-5 h-full transition-all duration-300 ease-in-out;
+  }
 }
