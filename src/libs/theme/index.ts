@@ -1,3 +1,5 @@
+import { createIcon } from "../../components/ui";
+
 export type Theme = "light" | "dark" | "auto";
 
 export const getTheme = (): Theme => {
@@ -21,18 +23,22 @@ export const setTheme = (theme: Theme): void => {
   document.documentElement.classList.toggle("dark", theme === "dark");
 };
 
-export const updateButtonText = (theme: Theme): void => {
-  const button = document.getElementById("theme-toggle") as HTMLButtonElement;
+export function updateIcon(theme: Theme): void {
+  const button = document.getElementById("theme-switcher") as HTMLButtonElement;
   if (button) {
-    button.textContent =
-      theme === "dark" ? "Switch to Light" : "Switch to Dark";
+    const iconType = theme === "light" ? "moon" : "sun";
+    const iconElement = createIcon({
+      type: iconType,
+      size: "lg",
+    });
+    button.innerHTML = iconElement.outerHTML; // Обновляем innerHTML кнопки
   }
-};
+}
 
 export function initDarkMode(): void {
   const currentTheme = getTheme();
   setTheme(currentTheme);
-  updateButtonText(currentTheme);
+  updateIcon(currentTheme);
 
   window
     .matchMedia("(prefers-color-scheme: dark)")
@@ -55,7 +61,7 @@ export function initDarkMode(): void {
         newTheme = "light";
       }
       setTheme(newTheme);
-      updateButtonText(newTheme);
+      updateIcon(newTheme);
     });
   }
 }

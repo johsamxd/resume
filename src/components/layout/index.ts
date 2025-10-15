@@ -2,7 +2,7 @@ import { t } from "i18next";
 import { About, Links, Portfolio } from "../sections";
 import { Header } from "./header";
 
-export function Layout(): string {
+export function Layout() {
   return `
       <div>
         ${Header()}
