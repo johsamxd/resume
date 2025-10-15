@@ -1,18 +1,17 @@
 import "./style.css";
-import { initDarkMode } from "./dark-mode.ts";
-import { renderHeader } from "./components/header.ts";
-import { renderAbout } from "./components/about.ts";
-import { renderPortfolio } from "./components/portfolio.ts";
-import { renderLinks } from "./components/links.ts";
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <div>
-    ${renderHeader()}
-    <h1 class="text-center text-5xl font-bold">Кырджагасов Аман Анатольевич</h1>
-    ${renderAbout()}
-    ${renderPortfolio()}
-    ${renderLinks()}  
-  </div>
-`;
+import i18next from "./libs/translations/index.ts";
+import { initDarkMode, initLangSwitcher } from "./libs";
+import { Layout } from "./components/layout/index.ts";
 
-initDarkMode();
+function App() {
+  const app = document.querySelector<HTMLDivElement>("#app")!;
+  app.innerHTML = Layout();
+
+  initLangSwitcher(App);
+  initDarkMode();
+}
+
+i18next.init().then(() => {
+  App();
+});

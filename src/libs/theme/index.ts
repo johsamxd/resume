@@ -1,6 +1,6 @@
-type Theme = "light" | "dark" | "auto";
+export type Theme = "light" | "dark" | "auto";
 
-const getTheme = (): Theme => {
+export const getTheme = (): Theme => {
   const stored = localStorage.getItem("theme");
   if (stored === "light" || stored === "dark") {
     return stored as Theme;
@@ -16,12 +16,12 @@ const getTheme = (): Theme => {
   }
 };
 
-const setTheme = (theme: Theme): void => {
+export const setTheme = (theme: Theme): void => {
   localStorage.setItem("theme", theme);
   document.documentElement.classList.toggle("dark", theme === "dark");
 };
 
-const updateButtonText = (theme: Theme): void => {
+export const updateButtonText = (theme: Theme): void => {
   const button = document.getElementById("theme-toggle") as HTMLButtonElement;
   if (button) {
     button.textContent =
@@ -42,11 +42,11 @@ export function initDarkMode(): void {
       }
     });
 
-  const themeToggle = document.getElementById(
-    "theme-toggle"
+  const themeSwitcher = document.getElementById(
+    "theme-switcher"
   ) as HTMLButtonElement;
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
+  if (themeSwitcher) {
+    themeSwitcher.addEventListener("click", () => {
       const currentTheme = getTheme();
       let newTheme: Theme;
       if (currentTheme === "light") {
