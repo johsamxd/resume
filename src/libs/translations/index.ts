@@ -25,7 +25,7 @@ export function initLangSwitcher(onLanguageChange: () => void): void {
       });
     });
     const updateButtonText = () => {
-      LangSwitcher.textContent = i18next.language === "en" ? "ENG" : "РУС";
+      LangSwitcher.textContent = i18next.language === "en" ? "РУС" : "ENG";
     };
     updateButtonText();
   }
